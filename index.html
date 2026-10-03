@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -24,15 +24,20 @@ a { text-decoration:none; color:inherit; }
 
 /* NAVBAR */
 .navbar { position:sticky; top:0; z-index:1000; background:rgba(0,51,102,.97); backdrop-filter:blur(10px); box-shadow:0 4px 20px rgba(0,0,0,.12); }
-.nav-inner { min-height:80px; display:flex; align-items:center; justify-content:center; }
-.brand { display:flex; align-items:center; justify-content:center; text-decoration:none; }
-.header-logo-img { width:160px; height:60px; object-fit:contain; background:transparent; display:block; }
+.nav-inner { min-height:72px; display:flex; align-items:center; justify-content:space-between; gap:25px; }
+.brand { display:flex; align-items:center; gap:12px; color:#fff; font-weight:800; }
+.brand-mark { width:43px; height:43px; border-radius:12px; display:grid; place-items:center; background:linear-gradient(135deg,var(--blue2),var(--cyan)); font-size:20px; }
+.brand small { display:block; font-size:11px; font-weight:500; opacity:.8; }
+.nav-links { display:flex; gap:8px; align-items:center; }
+.nav-links a { color:#fff; padding:10px 14px; border-radius:8px; font-size:14px; font-weight:600; }
+.nav-links a:hover { background:rgba(255,255,255,.12); }
+.menu-btn { display:none; border:0; background:none; color:#fff; font-size:25px; }
 
 /* HERO */
 .hero { background:linear-gradient(135deg,#003366 0%,#005b9f 55%,#00acc1 100%); color:#fff; padding:75px 0; overflow:hidden; position:relative; }
 .hero:after { content:""; position:absolute; width:430px; height:430px; border-radius:50%; background:rgba(255,255,255,.08); right:-130px; top:-180px; }
 .hero-grid { display:grid; grid-template-columns:1.25fr .75fr; gap:50px; align-items:center; position:relative; z-index:1; }
-.hero-logo-center { display:block; max-width:280px; width:100%; height:auto; margin-bottom:22px; filter:drop-shadow(0 4px 12px rgba(0,0,0,0.15)); }
+.eyebrow { display:inline-block; padding:7px 13px; border:1px solid rgba(255,255,255,.3); border-radius:30px; font-size:12px; font-weight:700; letter-spacing:.8px; margin-bottom:18px; }
 .hero h1 { font-size:clamp(2.4rem,5vw,4.5rem); line-height:1.05; margin-bottom:18px; }
 .hero h1 span { color:#8eeaf2; }
 .hero p { max-width:680px; color:#e6f5ff; font-size:17px; }
@@ -83,11 +88,12 @@ footer h3 { margin-bottom:13px; }
 footer p, footer a { color:#cfe5f5; font-size:14px; }
 footer a:hover { color:#fff; }
 .footer-bottom { border-top:1px solid rgba(255,255,255,.15); margin-top:30px; padding-top:16px; text-align:center; color:#b8d2e4; font-size:12px; }
-.float-whatsapp { position:fixed; right:22px; bottom:22px; z-index:999; width:57px; height:57px; border-radius:50%; display:grid; place-items:center; background:#25D366; color:#fff; font-size:27px; box-shadow:0 7px 20px rgba(0,0,0,.25); }
-.float-whatsapp:hover { transform:scale(1.06); }
 
 /* RESPONSIVE */
 @media(max-width:850px) {
+  .nav-links { display:none; position:absolute; left:4%; right:4%; top:72px; background:var(--blue); padding:10px; border-radius:0 0 12px 12px; flex-direction:column; align-items:stretch; }
+  .nav-links.open { display:flex; }
+  .menu-btn { display:block; }
   .hero-grid { grid-template-columns:1fr; }
   .cards { grid-template-columns:1fr; }
   .info-grid { grid-template-columns:1fr; }
@@ -107,15 +113,23 @@ footer a:hover { color:#fff; }
 <nav class="navbar">
   <div class="container nav-inner">
     <a class="brand" href="#inicio">
-      <img src="Image uleam.jpeg" alt="Logo ULEAM" class="header-logo-img">
+      <div class="brand-mark"><i class="fas fa-heartbeat"></i></div>
+      <div>CAI ULEAM<small>Centro de Atención Integral</small></div>
     </a>
+    <button class="menu-btn" aria-label="Abrir menú" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+    <div class="nav-links" id="navLinks">
+      <a href="#inicio">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#especialidades">Especialidades</a>
+      <a href="#contacto">Contacto</a>
+    </div>
   </div>
 </nav>
 
 <header class="hero" id="inicio">
   <div class="container hero-grid">
     <div>
-      <img src="image_81729f.png" alt="Logo CAI" class="hero-logo-center">
+      <span class="eyebrow">UNIVERSIDAD LAICA ELOY ALFARO DE MANABÍ</span>
       <h1>Centro de Atención <span>Integral</span></h1>
       <p>Atención en salud con servicios generales, profesionales especializados y acompañamiento integral para la comunidad.</p>
       <div class="hero-buttons">
@@ -142,7 +156,7 @@ footer a:hover { color:#fff; }
       <article class="card">
             <div class="icon"><i class="fas fa-user-md"></i></div>
             <div class="card-body">
-                <div class="card-head"><h3>Medicina General</h3><span>8am - 12pm</span></div>
+                <div class="card-head"><h3>Medicina General</h3><span>8 - 12 am</span></div>
                 <p class="desc">Tu primera línea de defensa para el cuidado preventivo.</p>
                 <p class="doctor"><i class="fas fa-user-md"></i>Dr. Franklin José Arteaga Pazmiño</p>
             </div>
@@ -150,7 +164,7 @@ footer a:hover { color:#fff; }
       <article class="card">
             <div class="icon"><i class="fas fa-tooth"></i></div>
             <div class="card-body">
-                <div class="card-head"><h3>Odontología</h3><span>8am - 20pm</span></div>
+                <div class="card-head"><h3>Odontología</h3><span>8 am - 8 pm</span></div>
                 <p class="desc">Para mantener tu sonrisa sana y radiante.</p>
                 <p class="doctor"><i class="fas fa-user-md"></i>Od. Janeth Mendoza, Od. Nancy Zambrano y Od. Francisco Tortorelli</p>
             </div>
@@ -158,7 +172,7 @@ footer a:hover { color:#fff; }
       <article class="card">
             <div class="icon"><i class="fas fa-user-nurse"></i></div>
             <div class="card-body">
-                <div class="card-head"><h3>Enfermería</h3><span>8am - 20pm</span></div>
+                <div class="card-head"><h3>Enfermería</h3><span>8 am - 8 pm</span></div>
                 <p class="desc">Brindando atención continua y soporte oportuno.</p>
                 <p class="doctor"><i class="fas fa-user-md"></i>Lcda. Gema Hidalgo y Ing. Karen Marcillo</p>
             </div>
@@ -166,7 +180,7 @@ footer a:hover { color:#fff; }
       <article class="card">
             <div class="icon"><i class="fas fa-apple-alt"></i></div>
             <div class="card-body">
-                <div class="card-head"><h3>Nutrición</h3><span>12pm - 20pm</span></div>
+                <div class="card-head"><h3>Nutrición</h3><span>12 pm - 8 pm</span></div>
                 <p class="desc">Porque alimentarse bien es vivir bien.</p>
                 <p class="doctor"><i class="fas fa-user-md"></i>Lcda. Mary Carmen Concha Quijije</p>
             </div>
@@ -174,7 +188,7 @@ footer a:hover { color:#fff; }
       <article class="card">
             <div class="icon"><i class="fas fa-brain"></i></div>
             <div class="card-body">
-                <div class="card-head"><h3>Psicología</h3><span>8am-12pm / 16pm-20pm</span></div>
+                <div class="card-head"><h3>Psicología</h3><span>8-12 am / 4-8 pm</span></div>
                 <p class="desc">Un espacio seguro para cuidar tu salud mental.</p>
                 <p class="doctor"><i class="fas fa-user-md"></i>Ps. Cl. Yulexy Maria Muñoz Cusme</p>
             </div>
@@ -182,7 +196,7 @@ footer a:hover { color:#fff; }
       <article class="card">
             <div class="icon"><i class="fas fa-walking"></i></div>
             <div class="card-body">
-                <div class="card-head"><h3>Fisioterapia y T. Lenguaje</h3><span>8am - 20pm</span></div>
+                <div class="card-head"><h3>Fisioterapia y T. Lenguaje</h3><span>8 am - 8 pm</span></div>
                 <p class="desc">Recupera tu movilidad y fortalece tus capacidades.</p>
                 <p class="doctor"><i class="fas fa-user-md"></i>Lcdo. Carlos Mastarreno, Lcda. Lisseth Zambrano, Lcdo. Gerardo Moreira, Lcda. Maria Cusme y Lcda. Seneida Alava</p>
             </div>
@@ -202,7 +216,7 @@ footer a:hover { color:#fff; }
       <article class="card">
             <div class="icon"><i class="fas fa-heartbeat"></i></div>
             <div class="card-body">
-                <div class="card-head"><h3>Cardiología</h3><span>16pm - 20pm</span></div>
+                <div class="card-head"><h3>Cardiología</h3><span>4 - 8 pm</span></div>
                 <p class="desc">Cuidando el motor de tu vida.</p>
                 <p class="doctor"><i class="fas fa-user-md"></i>Dr. Luis Miguel Delgado Mendoza</p>
             </div>
@@ -210,7 +224,7 @@ footer a:hover { color:#fff; }
       <article class="card">
             <div class="icon"><i class="fas fa-stethoscope"></i></div>
             <div class="card-body">
-                <div class="card-head"><h3>Medicina Interna</h3><span>16pm - 20pm</span></div>
+                <div class="card-head"><h3>Medicina Interna</h3><span>4 - 8 pm</span></div>
                 <p class="desc">Diagnóstico y tratamiento especializado para tu salud integral.</p>
                 <p class="doctor"><i class="fas fa-user-md"></i>Dr. Gabriel Gabino Loor Macías</p>
             </div>
@@ -218,7 +232,7 @@ footer a:hover { color:#fff; }
       <article class="card">
             <div class="icon"><i class="fas fa-venus"></i></div>
             <div class="card-body">
-                <div class="card-head"><h3>Ginecología</h3><span>16pm - 20pm</span></div>
+                <div class="card-head"><h3>Ginecología</h3><span>4 - 8 pm</span></div>
                 <p class="desc">Atención especializada y preventiva.</p>
                 <p class="doctor"><i class="fas fa-user-md"></i>Dr. Carlos César Cuadros Navarro</p>
             </div>
@@ -226,7 +240,7 @@ footer a:hover { color:#fff; }
       <article class="card">
             <div class="icon"><i class="fas fa-child"></i></div>
             <div class="card-body">
-                <div class="card-head"><h3>Medicina Pediátrica</h3><span>16pm - 20pm</span></div>
+                <div class="card-head"><h3>Medicina Pediátrica</h3><span>4 - 8 pm</span></div>
                 <p class="desc">Cuidando con amor y profesionalismo a los más pequeños.</p>
                 <p class="doctor"><i class="fas fa-user-md"></i>Dra. Nohelia Zambrano Jurado</p>
             </div>
@@ -234,7 +248,7 @@ footer a:hover { color:#fff; }
       <article class="card">
             <div class="icon"><i class="fas fa-brain"></i></div>
             <div class="card-body">
-                <div class="card-head"><h3>Neurología</h3><span>16pm - 20pm</span></div>
+                <div class="card-head"><h3>Neurología</h3><span>4 - 8 pm</span></div>
                 <p class="desc">Especialistas dedicados al cuidado de tu sistema nervioso.</p>
                 <p class="doctor"><i class="fas fa-user-md"></i>Consultar disponibilidad</p>
             </div>
@@ -274,22 +288,32 @@ footer a:hover { color:#fff; }
   <div class="container">
     <div class="footer-grid">
       <div>
-        
+        <h3>CAI ULEAM</h3>
+        <p>Centro de Atención Integral de la Universidad Laica Eloy Alfaro de Manabí.</p>
       </div>
       <div>
-        
+        <h3>Contacto</h3>
+        <p><i class="fab fa-whatsapp"></i> 098 587 3193</p>
+        <p><i class="fas fa-map-marker-alt"></i> Ciudadela los Naranjos 1</p>
       </div>
       <div>
-        
+        <h3>Navegación</h3>
+        <p><a href="#inicio">Inicio</a></p>
+        <p><a href="#servicios">Servicios</a></p>
+        <p><a href="#especialidades">Especialidades</a></p>
       </div>
     </div>
     <div class="footer-bottom">© 2026 CAI ULEAM — Información de servicios y atención.</div>
   </div>
 </footer>
 
-<a class="float-whatsapp" href="https://wa.me/593985873193" target="_blank" aria-label="WhatsApp">
-  <i class="fab fa-whatsapp"></i>
-</a>
-
+<script>
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+});
+</script>
 </body>
 </html>
