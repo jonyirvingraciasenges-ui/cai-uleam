@@ -25,9 +25,8 @@ a { text-decoration:none; color:inherit; }
 /* NAVBAR */
 .navbar { position:sticky; top:0; z-index:1000; background:rgba(0,51,102,.97); backdrop-filter:blur(10px); box-shadow:0 4px 20px rgba(0,0,0,.12); }
 .nav-inner { min-height:72px; display:flex; align-items:center; justify-content:space-between; gap:25px; }
-.brand { display:flex; align-items:center; gap:12px; color:#fff; font-weight:800; }
-.brand-mark { width:43px; height:43px; border-radius:12px; display:grid; place-items:center; background:linear-gradient(135deg,var(--blue2),var(--cyan)); font-size:20px; }
-.brand small { display:block; font-size:11px; font-weight:500; opacity:.8; }
+.brand { display:flex; align-items:center; gap:12px; }
+.brand-img { height:40px; width:auto; object-fit:contain; }
 .nav-links { display:flex; gap:8px; align-items:center; }
 .nav-links a { color:#fff; padding:10px 14px; border-radius:8px; font-size:14px; font-weight:600; }
 .nav-links a:hover { background:rgba(255,255,255,.12); }
@@ -47,10 +46,10 @@ a { text-decoration:none; color:inherit; }
 .btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,.2); }
 .btn-outline { color:#fff; border-color:rgba(255,255,255,.45); }
 .btn-outline:hover { background:rgba(255,255,255,.1); }
-.hero-card { background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2); border-radius:22px; padding:30px; backdrop-filter:blur(8px); }
-.hero-card .big-icon { font-size:55px; margin-bottom:15px; color:#9cf1f7; }
-.hero-card h2 { font-size:23px; margin-bottom:8px; }
-.hero-card p { font-size:14px; color:#e4f6ff; }
+
+/* HERO LOGO CARD */
+.hero-card { background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2); border-radius:22px; padding:30px; backdrop-filter:blur(8px); display:grid; place-items:center; text-align:center; }
+.hero-card img { max-width:100%; height:auto; border-radius:12px; background:#fff; padding:10px; }
 
 /* SECTIONS */
 section { padding:70px 0; }
@@ -113,8 +112,8 @@ footer a:hover { color:#fff; }
 <nav class="navbar">
   <div class="container nav-inner">
     <a class="brand" href="#inicio">
-      <div class="brand-mark"><i class="fas fa-heartbeat"></i></div>
-      <div>CAI ULEAM<small>Centro de Atención Integral</small></div>
+      <!-- Logo ULEAM superior derecho/izquierdo según tu diseño -->
+      <img src="https://i.ibb.co/3s3p96G/uleam-logo.png" alt="Logo ULEAM" class="brand-img" onerror="this.style.display='none'">
     </a>
     <button class="menu-btn" aria-label="Abrir menú" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
     <div class="nav-links" id="navLinks">
@@ -138,9 +137,8 @@ footer a:hover { color:#fff; }
       </div>
     </div>
     <div class="hero-card">
-      <div class="big-icon"><i class="fas fa-stethoscope"></i></div>
-      <h2>Tu salud es nuestra prioridad</h2>
-      <p>Estamos para cuidarte con atención profesional y servicios orientados a tus necesidades.</p>
+      <!-- Logo CAI que mostraste en la imagen -->
+      <img src="https://i.ibb.co/5G7J551/cai-logo.png" alt="Logo CAI ULEAM" onerror="this.style.display='none'">
     </div>
   </div>
 </header>
