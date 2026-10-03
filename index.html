@@ -1,0 +1,295 @@
+<<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Centro de Atención Integral ULEAM - Servicios generales y especialidades médicas.">
+<title>Centro de Atención Integral ULEAM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+:root {
+  --blue:#003366; --blue2:#0072BC; --cyan:#00ACC1; --bg:#f4f8fc;
+  --white:#fff; --text:#172033; --muted:#64748b; --line:#e2e8f0;
+  --shadow:0 12px 35px rgba(0,51,102,.10);
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { font-family:Poppins,sans-serif; color:var(--text); background:var(--bg); line-height:1.6; }
+a { text-decoration:none; color:inherit; }
+.container { width:min(1180px,92%); margin:auto; }
+
+/* NAVBAR */
+.navbar { position:sticky; top:0; z-index:1000; background:rgba(0,51,102,.97); backdrop-filter:blur(10px); box-shadow:0 4px 20px rgba(0,0,0,.12); }
+.nav-inner { min-height:80px; display:flex; align-items:center; justify-content:center; }
+.brand { display:flex; align-items:center; justify-content:center; text-decoration:none; }
+.header-logo-img { width:160px; height:60px; object-fit:contain; background:transparent; display:block; }
+
+/* HERO */
+.hero { background:linear-gradient(135deg,#003366 0%,#005b9f 55%,#00acc1 100%); color:#fff; padding:75px 0; overflow:hidden; position:relative; }
+.hero:after { content:""; position:absolute; width:430px; height:430px; border-radius:50%; background:rgba(255,255,255,.08); right:-130px; top:-180px; }
+.hero-grid { display:grid; grid-template-columns:1.25fr .75fr; gap:50px; align-items:center; position:relative; z-index:1; }
+.hero-logo-center { display:block; max-width:280px; width:100%; height:auto; margin-bottom:22px; filter:drop-shadow(0 4px 12px rgba(0,0,0,0.15)); }
+.hero h1 { font-size:clamp(2.4rem,5vw,4.5rem); line-height:1.05; margin-bottom:18px; }
+.hero h1 span { color:#8eeaf2; }
+.hero p { max-width:680px; color:#e6f5ff; font-size:17px; }
+.hero-buttons { display:flex; gap:13px; flex-wrap:wrap; margin-top:28px; }
+.btn { display:inline-flex; align-items:center; gap:9px; padding:13px 20px; border-radius:10px; font-weight:700; border:1px solid transparent; transition:.25s; }
+.btn-primary { background:#fff; color:var(--blue); }
+.btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,.2); }
+.btn-outline { color:#fff; border-color:rgba(255,255,255,.45); }
+.btn-outline:hover { background:rgba(255,255,255,.1); }
+.hero-card { background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2); border-radius:22px; padding:30px; backdrop-filter:blur(8px); }
+.hero-card .big-icon { font-size:55px; margin-bottom:15px; color:#9cf1f7; }
+.hero-card h2 { font-size:23px; margin-bottom:8px; }
+.hero-card p { font-size:14px; color:#e4f6ff; }
+
+/* SECTIONS */
+section { padding:70px 0; }
+.section-head { text-align:center; max-width:760px; margin:0 auto 40px; }
+.section-head .tag { color:var(--blue2); font-weight:800; font-size:13px; text-transform:uppercase; letter-spacing:1px; }
+.section-head h2 { font-size:clamp(1.8rem,3vw,2.6rem); color:var(--blue); margin:7px 0 10px; }
+.section-head p { color:var(--muted); }
+.cards { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
+.card { background:#fff; border:1px solid var(--line); border-left:5px solid var(--blue2); border-radius:15px; padding:22px; display:flex; gap:17px; box-shadow:0 6px 20px rgba(0,51,102,.05); transition:.25s; }
+.card:hover { transform:translateY(-4px); box-shadow:var(--shadow); border-left-color:var(--cyan); }
+.icon { flex:0 0 52px; width:52px; height:52px; border-radius:50%; display:grid; place-items:center; color:#fff; font-size:20px; background:linear-gradient(135deg,var(--blue2),var(--cyan)); }
+.card-body { min-width:0; }
+.card-head { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; }
+.card h3 { color:var(--blue); font-size:17px; line-height:1.3; }
+.card-head span { white-space:nowrap; background:#e5f5fb; color:var(--blue2); padding:3px 9px; border-radius:20px; font-size:11px; font-weight:700; }
+.desc { color:var(--muted); font-size:13px; font-style:italic; margin:7px 0; }
+.doctor { font-size:13px; font-weight:600; color:#263548; display:flex; gap:7px; }
+.doctor i { color:var(--cyan); margin-top:4px; }
+
+/* SPECIALTIES */
+.specialties { background:#eef8fc; border-top:1px solid #dceff6; border-bottom:1px solid #dceff6; }
+.specialties .card { border-left-color:var(--cyan); }
+
+/* INFO */
+.info-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.info-box { background:#fff; border:1px solid var(--line); border-radius:16px; padding:25px; text-align:center; box-shadow:0 5px 20px rgba(0,0,0,.04); }
+.info-box i { font-size:28px; color:var(--blue2); margin-bottom:12px; }
+.info-box h3 { color:var(--blue); margin-bottom:6px; }
+.info-box p { color:var(--muted); font-size:14px; }
+
+/* FOOTER */
+footer { background:var(--blue); color:#fff; padding:45px 0 20px; }
+.footer-grid { display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:35px; }
+footer h3 { margin-bottom:13px; }
+footer p, footer a { color:#cfe5f5; font-size:14px; }
+footer a:hover { color:#fff; }
+.footer-bottom { border-top:1px solid rgba(255,255,255,.15); margin-top:30px; padding-top:16px; text-align:center; color:#b8d2e4; font-size:12px; }
+.float-whatsapp { position:fixed; right:22px; bottom:22px; z-index:999; width:57px; height:57px; border-radius:50%; display:grid; place-items:center; background:#25D366; color:#fff; font-size:27px; box-shadow:0 7px 20px rgba(0,0,0,.25); }
+.float-whatsapp:hover { transform:scale(1.06); }
+
+/* RESPONSIVE */
+@media(max-width:850px) {
+  .hero-grid { grid-template-columns:1fr; }
+  .cards { grid-template-columns:1fr; }
+  .info-grid { grid-template-columns:1fr; }
+  .footer-grid { grid-template-columns:1fr; }
+}
+@media(max-width:520px) {
+  section { padding:50px 0; }
+  .hero { padding:55px 0; }
+  .card { padding:17px; }
+  .card-head { flex-direction:column; }
+  .card-head span { align-self:flex-start; }
+}
+</style>
+</head>
+
+<body>
+<nav class="navbar">
+  <div class="container nav-inner">
+    <a class="brand" href="#inicio">
+      <img src="Image uleam.jpeg" alt="Logo ULEAM" class="header-logo-img">
+    </a>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+  <div class="container hero-grid">
+    <div>
+      <img src="image_81729f.png" alt="Logo CAI" class="hero-logo-center">
+      <h1>Centro de Atención <span>Integral</span></h1>
+      <p>Atención en salud con servicios generales, profesionales especializados y acompañamiento integral para la comunidad.</p>
+      <div class="hero-buttons">
+        <a class="btn btn-primary" href="#servicios"><i class="fas fa-calendar-check"></i> Ver servicios</a>
+        <a class="btn btn-outline" href="https://wa.me/593985873193" target="_blank"><i class="fab fa-whatsapp"></i> Agendar cita</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="big-icon"><i class="fas fa-stethoscope"></i></div>
+      <h2>Tu salud es nuestra prioridad</h2>
+      <p>Estamos para cuidarte con atención profesional y servicios orientados a tus necesidades.</p>
+    </div>
+  </div>
+</header>
+
+<section id="servicios">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">Atención integral</span>
+      <h2>Servicios Generales y de Apoyo Diario</h2>
+      <p>Conoce las áreas disponibles, horarios de atención y profesionales responsables.</p>
+    </div>
+    <div class="cards">
+      <article class="card">
+            <div class="icon"><i class="fas fa-user-md"></i></div>
+            <div class="card-body">
+                <div class="card-head"><h3>Medicina General</h3><span>8am - 12pm</span></div>
+                <p class="desc">Tu primera línea de defensa para el cuidado preventivo.</p>
+                <p class="doctor"><i class="fas fa-user-md"></i>Dr. Franklin José Arteaga Pazmiño</p>
+            </div>
+        </article>
+      <article class="card">
+            <div class="icon"><i class="fas fa-tooth"></i></div>
+            <div class="card-body">
+                <div class="card-head"><h3>Odontología</h3><span>8am - 20pm</span></div>
+                <p class="desc">Para mantener tu sonrisa sana y radiante.</p>
+                <p class="doctor"><i class="fas fa-user-md"></i>Od. Janeth Mendoza, Od. Nancy Zambrano y Od. Francisco Tortorelli</p>
+            </div>
+        </article>
+      <article class="card">
+            <div class="icon"><i class="fas fa-user-nurse"></i></div>
+            <div class="card-body">
+                <div class="card-head"><h3>Enfermería</h3><span>8am - 20pm</span></div>
+                <p class="desc">Brindando atención continua y soporte oportuno.</p>
+                <p class="doctor"><i class="fas fa-user-md"></i>Lcda. Gema Hidalgo y Ing. Karen Marcillo</p>
+            </div>
+        </article>
+      <article class="card">
+            <div class="icon"><i class="fas fa-apple-alt"></i></div>
+            <div class="card-body">
+                <div class="card-head"><h3>Nutrición</h3><span>12pm - 20pm</span></div>
+                <p class="desc">Porque alimentarse bien es vivir bien.</p>
+                <p class="doctor"><i class="fas fa-user-md"></i>Lcda. Mary Carmen Concha Quijije</p>
+            </div>
+        </article>
+      <article class="card">
+            <div class="icon"><i class="fas fa-brain"></i></div>
+            <div class="card-body">
+                <div class="card-head"><h3>Psicología</h3><span>8am-12pm / 16pm-20pm</span></div>
+                <p class="desc">Un espacio seguro para cuidar tu salud mental.</p>
+                <p class="doctor"><i class="fas fa-user-md"></i>Ps. Cl. Yulexy Maria Muñoz Cusme</p>
+            </div>
+        </article>
+      <article class="card">
+            <div class="icon"><i class="fas fa-walking"></i></div>
+            <div class="card-body">
+                <div class="card-head"><h3>Fisioterapia y T. Lenguaje</h3><span>8am - 20pm</span></div>
+                <p class="desc">Recupera tu movilidad y fortalece tus capacidades.</p>
+                <p class="doctor"><i class="fas fa-user-md"></i>Lcdo. Carlos Mastarreno, Lcda. Lisseth Zambrano, Lcdo. Gerardo Moreira, Lcda. Maria Cusme y Lcda. Seneida Alava</p>
+            </div>
+        </article>
+    </div>
+  </div>
+</section>
+
+<section class="specialties" id="especialidades">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">Atención especializada</span>
+      <h2>Especialidades Médicas</h2>
+      <p>Servicios especializados para complementar una atención integral.</p>
+    </div>
+    <div class="cards">
+      <article class="card">
+            <div class="icon"><i class="fas fa-heartbeat"></i></div>
+            <div class="card-body">
+                <div class="card-head"><h3>Cardiología</h3><span>16pm - 20pm</span></div>
+                <p class="desc">Cuidando el motor de tu vida.</p>
+                <p class="doctor"><i class="fas fa-user-md"></i>Dr. Luis Miguel Delgado Mendoza</p>
+            </div>
+        </article>
+      <article class="card">
+            <div class="icon"><i class="fas fa-stethoscope"></i></div>
+            <div class="card-body">
+                <div class="card-head"><h3>Medicina Interna</h3><span>16pm - 20pm</span></div>
+                <p class="desc">Diagnóstico y tratamiento especializado para tu salud integral.</p>
+                <p class="doctor"><i class="fas fa-user-md"></i>Dr. Gabriel Gabino Loor Macías</p>
+            </div>
+        </article>
+      <article class="card">
+            <div class="icon"><i class="fas fa-venus"></i></div>
+            <div class="card-body">
+                <div class="card-head"><h3>Ginecología</h3><span>16pm - 20pm</span></div>
+                <p class="desc">Atención especializada y preventiva.</p>
+                <p class="doctor"><i class="fas fa-user-md"></i>Dr. Carlos César Cuadros Navarro</p>
+            </div>
+        </article>
+      <article class="card">
+            <div class="icon"><i class="fas fa-child"></i></div>
+            <div class="card-body">
+                <div class="card-head"><h3>Medicina Pediátrica</h3><span>16pm - 20pm</span></div>
+                <p class="desc">Cuidando con amor y profesionalismo a los más pequeños.</p>
+                <p class="doctor"><i class="fas fa-user-md"></i>Dra. Nohelia Zambrano Jurado</p>
+            </div>
+        </article>
+      <article class="card">
+            <div class="icon"><i class="fas fa-brain"></i></div>
+            <div class="card-body">
+                <div class="card-head"><h3>Neurología</h3><span>16pm - 20pm</span></div>
+                <p class="desc">Especialistas dedicados al cuidado de tu sistema nervioso.</p>
+                <p class="doctor"><i class="fas fa-user-md"></i>Consultar disponibilidad</p>
+            </div>
+        </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">Información</span>
+      <h2>Encuéntranos y agenda tu cita</h2>
+      <p>Utiliza nuestros canales de contacto para solicitar información o coordinar tu atención.</p>
+    </div>
+    <div class="info-grid">
+      <div class="info-box">
+        <i class="fab fa-whatsapp"></i>
+        <h3>Agenda tu cita</h3>
+        <p>098 587 3193</p>
+      </div>
+      <div class="info-box">
+        <i class="fas fa-map-marker-alt"></i>
+        <h3>Ubicación</h3>
+        <p>Ciudadela los Naranjos 1, calle periférico los naranjos</p>
+      </div>
+      <div class="info-box">
+        <i class="fas fa-clock"></i>
+        <h3>Atención</h3>
+        <p>Consulta el horario específico de cada servicio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contacto">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        
+      </div>
+      <div>
+        
+      </div>
+      <div>
+        
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 CAI ULEAM — Información de servicios y atención.</div>
+  </div>
+</footer>
+
+<a class="float-whatsapp" href="https://wa.me/593985873193" target="_blank" aria-label="WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+</body>
+</html>
